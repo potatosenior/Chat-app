@@ -6,7 +6,8 @@
   },
   "scripts": {
     "start": "node src/index.js",
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon src/index.js",
+    "deploy": "git push origin master && git push heroku master"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
