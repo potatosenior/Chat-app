@@ -10,6 +10,7 @@ const $messages = document.querySelector("#messages");
 const messageTemplate = document.querySelector("#message-template").innerHTML;
 const locationTemplate = document.querySelector("#location-template").innerHTML;
 const sidebarTemplate = document.querySelector("#sidebar-template").innerHTML;
+const sidebarTemplateM = document.querySelector("#sidebar-template-m").innerHTML;
 
 // Options
 // pega os params do link
@@ -59,10 +60,12 @@ socket.on("locationMessage", message => {
   $messages.insertAdjacentHTML('beforeend', html);
   autoScroll();
 });
-
+// lista de usuarios
 socket.on("roomData", ({room, users}, callback) => {
   const html = Mustache.render(sidebarTemplate, {room, users});
+  const html2 = Mustache.render(sidebarTemplateM, {room, users});
   document.querySelector("#sidebar").innerHTML = html;
+  document.querySelector("#sidebar-m").innerHTML = html2;
 });
 
 // manda localizaçao
@@ -104,3 +107,8 @@ socket.emit("join", {username, room}, error => {
     location.href = "/";
   }
 });
+
+function menu(){
+  document.querySelector(".chat").classList.toggle("flex-change");
+  document.querySelector("#sidebar").classList.toggle("active");
+}

@@ -90,11 +90,33 @@ button:disabled {
 }
 
 .chat__sidebar {
-    height: 100vh;
+    
     color: white;
     background: #333744;
     width: 225px;
-    overflow-y: scroll
+    overflow-y: scroll;
+    transition: max-width 1s linear;
+}
+
+.chat__sidebar_m {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    background: #333744;
+    color: white;
+}
+
+svg {
+    fill: white !important;
+    width: 10%;
+    margin-left: 10px;
+}
+
+.header-m {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
 }
 
 /* Chat styles */
@@ -104,6 +126,7 @@ button:disabled {
     display: flex;
     flex-direction: column;
     max-height: 100vh;
+    min-height: 90vh;
 }
 
 .chat__messages {
@@ -180,4 +203,40 @@ button:disabled {
     list-style-type: none;
     font-weight: 300;
     padding: 12px 24px 0 24px;
+}
+
+@media (max-width: 600px) {
+    .compose {
+        flex-direction: column-reverse;
+        flex-shrink: 0;
+        margin-top: 0px;
+        padding: 4px;
+    }
+    
+    .compose form {
+        margin-right: 0px;
+        margin-top: 5px;
+    }
+    .compose input {
+        border: 1px solid #eeeeee;
+        width: 100%;
+        padding: 12px;
+        margin: 0 4px 0 0;
+        flex-grow: 1;
+    }
+    .chat {
+       flex-direction: column;
+    }
+    .chat__sidebar {
+        overflow: hidden;
+        max-width: 0%;
+        height: 0;
+    }
+    .active {
+        height: calc(100vh - 60px);
+        max-width: 100%;
+    }
+    .flex-change {
+        flex-direction: row;
+    }
 }
